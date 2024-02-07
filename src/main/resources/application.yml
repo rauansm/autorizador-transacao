@@ -1,0 +1,15 @@
+server:
+  servlet:
+    context-path: /vr-beneficios
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/miniautorizador?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password:
+    driverClassName: com.mysql.jdbc.Driver
+
+  spring:
+    flyway:
+      locations=classpath: db/migration
