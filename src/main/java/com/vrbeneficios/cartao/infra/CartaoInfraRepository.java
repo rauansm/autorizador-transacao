@@ -9,6 +9,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 @RequiredArgsConstructor
 @Log4j2
@@ -24,5 +26,13 @@ public class CartaoInfraRepository implements CartaoRepository {
                 cartao.getNumeroCartao()), ProblemType.CARTAO_DUPLICADO);}
         log.info("[finaliza] CartaoInfraRepository - salva");
         return cartao;
+    }
+
+    @Override
+    public Cartao buscaCartaoPeloNumero(String numeroCartao) {
+        log.info("[inicia] CartaoInfraRepository - buscaCartaoPeloNumero");
+        Optional<Cartao> cartao = cartaoSpringDataJPA.findCartaoByNumeroCartao(numeroCartao);
+        log.info("[finaliza] CartaoInfraRepository - buscaCartaoPeloNumero");
+        return cartao.orElseThrow(() -> APIException.negocio("Cartão informado não existe.", ProblemType.CARTAO_INEXISTENTE));
     }
 }

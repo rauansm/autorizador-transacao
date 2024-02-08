@@ -17,4 +17,12 @@ public class CartaoController implements CartaoAPI{
         log.info("[finaliza] CartaoController - criaCartao");
         return cartaoCriado;
     }
+
+    @Override
+    public CartaoSaldoResponse consultaSaldoCartao(String numeroCartao) {
+        log.info("[inicia] CartaoController - consultaSaldoCartao");
+        CartaoSaldoResponse saldoCartao = cartaoService.consultaSaldoCartao(numeroCartao);
+        log.info("[finaliza] CartaoController - consultaSaldoCartao");
+        return saldoCartao;
+    }
 }
