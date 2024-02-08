@@ -1,5 +1,6 @@
 package com.vrbeneficios.cartao.dominio;
 
+import com.vrbeneficios.cartao.application.api.CartaoRequest;
 import com.vrbeneficios.cliente.dominio.Cliente;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -28,4 +29,10 @@ public class Cartao {
     @CreationTimestamp
     private LocalDateTime dataCriacao;
 
+    public Cartao(Cliente cliente, CartaoRequest cartaoRequest) {
+        this.numeroCartao = cartaoRequest.getNumeroCartao();
+        this.saldo = new BigDecimal(500);
+        this.senha = cartaoRequest.getSenha();
+        this.donoCartao = cliente;
+    }
 }

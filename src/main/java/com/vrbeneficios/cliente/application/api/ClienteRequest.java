@@ -9,10 +9,10 @@ import javax.validation.constraints.NotNull;
 
 @Value
 public class ClienteRequest {
-    @NotBlank
+    @NotBlank(message = "Nome não pode estar em branco")
     private String nome;
-    @NotBlank
-    @Email(message = "Endereço de e-mail incorreto!")
+    @NotBlank(message = "E-mail não pode estar em branco")
+    @Email(message = "Endereço de e-mail incorreto")
     private String email;
     @NotNull
     private Sexo sexo;

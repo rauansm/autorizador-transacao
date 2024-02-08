@@ -13,7 +13,8 @@ public enum ProblemType {
     RECURSO_NAO_ENCONTRADO("/recurso-nao-encontrado", "Recurso não encontrado"),
     SALDO_INSUFICIENTE("/saldo-insuficiente", "Saldo insuficiente"),
     SENHA_INVALIDA("/senha-invalida", "Senha invalida"),
-    CARTAO_INEXISTENTE("/cartao-inexistente", "Cartao inexistente");
+    CARTAO_INEXISTENTE("/cartao-inexistente", "Cartao inexistente"),
+    CARTAO_DUPLICADO("/cartao-duplicado", "Cartao duplicado");
 
     private String title;
     private String uri;
