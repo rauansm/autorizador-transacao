@@ -18,4 +18,12 @@ public class ClienteController implements ClienteAPI{
         log.info("[finaliza] ClienteController - criaCliente");
         return clienteCriado;
     }
+
+    @Override
+    public ClienteResponse buscaClientePeloId(String idCliente) {
+        log.info("[inicia] ClienteController - buscaClientePeloId");
+        ClienteResponse cliente = clienteService.buscaClientePorId(idCliente);
+        log.info("[finaliza] ClienteController - buscaClientePeloId");
+        return cliente;
+    }
 }

@@ -11,4 +11,8 @@ public interface ClienteAPI {
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     ClienteResponse criaCliente(@Valid @RequestBody ClienteRequest clienteRequest);
+
+    @GetMapping("/{idCliente}")
+    @ResponseStatus(code = HttpStatus.OK)
+    ClienteResponse buscaClientePeloId (@PathVariable String idCliente);
 }

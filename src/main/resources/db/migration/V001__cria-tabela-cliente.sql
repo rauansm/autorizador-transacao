@@ -6,3 +6,7 @@ sexo varchar(20) not null,
 data_cadastro datetime not null,
 primary key (id_cliente)
 ) engine=InnoDB;
+
+
+alter table cliente
+add constraint unique_email unique (email);

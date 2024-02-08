@@ -5,4 +5,6 @@ import com.vrbeneficios.cliente.application.api.ClienteResponse;
 
 public interface ClienteService {
     ClienteResponse criaCliente(ClienteRequest clienteRequest);
+
+    ClienteResponse buscaClientePorId(String idCliente);
 }

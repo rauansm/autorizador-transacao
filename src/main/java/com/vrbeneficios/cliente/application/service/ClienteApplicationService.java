@@ -20,4 +20,12 @@ public class ClienteApplicationService implements ClienteService{
         log.info("[finaliza] ClienteApplicationService - criaCliente");
         return new ClienteResponse(clienteNovo);
     }
+
+    @Override
+    public ClienteResponse buscaClientePorId(String idCliente) {
+        log.info("[inicia] ClienteApplicationService - buscaClientePorId");
+        Cliente cliente = clienteRepository.buscaClientePorId(idCliente);
+        log.info("[finaliza] ClienteApplicationService - buscaClientePorId");
+        return new ClienteResponse(cliente);
+    }
 }

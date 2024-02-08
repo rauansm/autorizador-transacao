@@ -2,11 +2,13 @@ package com.vrbeneficios.cliente.dominio;
 
 import com.vrbeneficios.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
