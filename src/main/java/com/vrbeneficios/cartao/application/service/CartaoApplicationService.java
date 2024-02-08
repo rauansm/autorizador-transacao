@@ -3,6 +3,7 @@ package com.vrbeneficios.cartao.application.service;
 import com.vrbeneficios.cartao.application.api.CartaoRequest;
 import com.vrbeneficios.cartao.application.api.CartaoResponse;
 import com.vrbeneficios.cartao.application.api.CartaoSaldoResponse;
+import com.vrbeneficios.cartao.application.api.TransacaoRequest;
 import com.vrbeneficios.cartao.application.repository.CartaoRepository;
 import com.vrbeneficios.cartao.dominio.Cartao;
 import com.vrbeneficios.cliente.application.repository.ClienteRepository;
@@ -32,5 +33,14 @@ public class CartaoApplicationService implements CartaoService {
         Cartao cartao = cartaoRepository.buscaCartaoPeloNumero(numeroCartao);
         log.info("[finaliza] CartaoApplicationService - consultaSaldoCartao");
         return CartaoSaldoResponse.builder().saldo(cartao.getSaldo()).build();
+    }
+
+    @Override
+    public void realizaTransacao(TransacaoRequest transacaoRequest) {
+        log.info("[inicia] CartaoApplicationService - realizaTransacao");
+        Cartao cartao = cartaoRepository.buscaCartaoPeloNumero(transacaoRequest.getNumeroCartao());
+        cartao.validaTransacao(transacaoRequest);
+        cartaoRepository.salva(cartao);
+        log.info("[finaliza] CartaoApplicationService - realizaTransacao");
     }
 }

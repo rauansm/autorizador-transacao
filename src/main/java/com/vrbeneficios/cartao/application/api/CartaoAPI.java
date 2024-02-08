@@ -1,6 +1,7 @@
 package com.vrbeneficios.cartao.application.api;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -17,4 +18,7 @@ public interface CartaoAPI {
     @GetMapping("/{numeroCartao}")
     @ResponseStatus(code = HttpStatus.OK)
     CartaoSaldoResponse consultaSaldoCartao (@PathVariable String numeroCartao);
+
+    @PostMapping("/transacoes")
+    ResponseEntity<String> realizaTransacao (@Valid @RequestBody TransacaoRequest transacaoRequest);
 }

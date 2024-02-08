@@ -1,7 +1,10 @@
 package com.vrbeneficios.cartao.dominio;
 
 import com.vrbeneficios.cartao.application.api.CartaoRequest;
+import com.vrbeneficios.cartao.application.api.TransacaoRequest;
 import com.vrbeneficios.cliente.dominio.Cliente;
+import com.vrbeneficios.handler.APIException;
+import com.vrbeneficios.handler.ProblemType;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,5 +37,22 @@ public class Cartao {
         this.saldo = new BigDecimal(500);
         this.senha = cartaoRequest.getSenha();
         this.donoCartao = cliente;
+    }
+
+    public void validaTransacao(TransacaoRequest transacaoRequest) {
+        validaSenha(transacaoRequest);
+        if (this.saldo.compareTo(transacaoRequest.getValor()) >= 0) {
+            this.saldo = this.saldo.subtract(transacaoRequest.getValor());
+        } else {
+            throw APIException.negocio("Saldo insuficiente", ProblemType.SALDO_INSUFICIENTE);
+        }
+
+
+    }
+
+    private void validaSenha(TransacaoRequest transacaoRequest) {
+        if (!this.senha.equals(transacaoRequest.getSenha())) {
+            throw APIException.negocio("Senha incorreta", ProblemType.SENHA_INVALIDA);
+        }
     }
 }

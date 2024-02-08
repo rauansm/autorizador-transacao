@@ -3,6 +3,8 @@ package com.vrbeneficios.cartao.application.api;
 import com.vrbeneficios.cartao.application.service.CartaoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -24,5 +26,13 @@ public class CartaoController implements CartaoAPI{
         CartaoSaldoResponse saldoCartao = cartaoService.consultaSaldoCartao(numeroCartao);
         log.info("[finaliza] CartaoController - consultaSaldoCartao");
         return saldoCartao;
+    }
+
+    @Override
+    public ResponseEntity<String> realizaTransacao(TransacaoRequest transacaoRequest) {
+        log.info("[inicia] CartaoController - realizaTransacao");
+        cartaoService.realizaTransacao(transacaoRequest);
+        log.info("[finaliza] CartaoController - realizaTransacao");
+        return ResponseEntity.status(HttpStatus.CREATED).body("OK");
     }
 }
