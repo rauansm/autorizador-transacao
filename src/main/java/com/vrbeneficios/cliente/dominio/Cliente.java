@@ -16,7 +16,6 @@ import java.util.UUID;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 public class Cliente {
-
     @Id
     @Column(columnDefinition = "VARCHAR(36)", name = "id_cliente", updatable = false, unique = true, nullable = false)
     private String idCliente;

@@ -11,6 +11,7 @@ import com.vrbeneficios.cliente.dominio.Cliente;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Log4j2
@@ -34,7 +35,7 @@ public class CartaoApplicationService implements CartaoService {
         log.info("[finaliza] CartaoApplicationService - consultaSaldoCartao");
         return CartaoSaldoResponse.builder().saldo(cartao.getSaldo()).build();
     }
-
+    @Transactional
     @Override
     public void realizaTransacao(TransacaoRequest transacaoRequest) {
         log.info("[inicia] CartaoApplicationService - realizaTransacao");
