@@ -9,7 +9,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.data.domain.AbstractAggregateRoot;
 
 import javax.persistence.*;
 import javax.validation.constraints.PositiveOrZero;
@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
-public class Cartao {
+public class Cartao extends AbstractAggregateRoot<Cartao> {
 
     @Id
     @Column(columnDefinition = "bigint", name = "numero_cartao", updatable = false, unique = true, nullable = false)
@@ -44,6 +44,7 @@ public class Cartao {
         validaSenha(transacaoRequest);
         if (this.saldo.compareTo(transacaoRequest.getValor()) >= 0) {
             this.saldo = this.saldo.subtract(transacaoRequest.getValor());
+            registerEvent(new TransacaoAprovadaEvent(this,transacaoRequest ));
         } else {
             throw APIException.negocio("Saldo insuficiente", ProblemType.SALDO_INSUFICIENTE);
         }

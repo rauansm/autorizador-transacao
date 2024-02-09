@@ -13,3 +13,14 @@ spring:
   spring:
     flyway:
       locations=classpath: db/migration
+
+
+  mail:
+    host: smtp.sendgrid.net
+    port: 587
+    username: apikey
+    password: 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
+
+vr:
+  email:
+    remetente: VR Beneficios <naoresponderbeneficios@outlook.com.br>
