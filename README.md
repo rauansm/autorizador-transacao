@@ -30,7 +30,7 @@ O projeto utiliza Docker Compose para facilitar a configuração e implantação
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas: Git, JDK 17, Maven,
 Docker e Docker Compose. Além disso, é recomendável ter um editor para trabalhar com o código como IntelliJ IDEA.
 
-# 🎲 Rodando o projeto
+## 🎲 Rodando o projeto
 
 Após clonar o repositório, basta executar o Docker Compose para iniciar o banco de dados.
 Em seguida, a aplicação Spring pode ser executada localmente, pois está utilizando um servidor Tomcat embutido
