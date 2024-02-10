@@ -21,7 +21,8 @@ Além disso, o sistema envia e-mails de notificação informando sobre o status 
 ## Funcionalidades Principais:
 
 Validação de transações com base em regras de autorização.
-Envio de e-mails de notificação para transações aprovadas.
+Envio de e-mails de notificação para transações aprovadas. 
+Utilizado padrão Domain Events do DDD para disparar um evento quando a transação for aprovada.
 Configuração e Implantação:
 O projeto utiliza Docker Compose para facilitar a configuração e implantação do banco de dados MySQL. 
 
